@@ -7,11 +7,19 @@ const app = express()
 
 app.use(express.json())
 
+require('dotenv').config()
+
+//! const dotenv = require('dotenv')
+//! dotenv.config()
+
 //* como nosotros podemos recibir info o data del cliente
 
 app.get('/', (req, res) => {
     res.json({
-        message: 'Server Ok!'
+        message: 'Server Ok!',
+        routes: {
+            products: 'http://localhost:9000/api/v1/products'
+        }
     })
 })
 //? rutas de productos
