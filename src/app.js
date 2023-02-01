@@ -1,5 +1,6 @@
 //? Dependencies
 const express = require('express')
+const productRouter = require('./products/products.router')
 
 //? Initial configs 
 const app = express()
@@ -13,6 +14,10 @@ app.get('/', (req, res) => {
         message: 'Server Ok!'
     })
 })
+//? rutas de productos
+app.use('/api/v1', productRouter)
+
+
 
 app.listen(9000, () => {
     console.log('Server started at port 9000')
