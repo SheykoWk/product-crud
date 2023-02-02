@@ -1,16 +1,17 @@
 //? Dependencies
 const express = require('express')
 const productRouter = require('./products/products.router')
+const db = require('./utils/database')
 
 //? Initial configs 
 const app = express()
 
 app.use(express.json())
 
-require('dotenv').config()
+db.authenticate() //? Mostrar en consola de manera informativa si la conexion se hizo de manera correcta
+    .
 
-//! const dotenv = require('dotenv')
-//! dotenv.config()
+
 
 //* como nosotros podemos recibir info o data del cliente
 
