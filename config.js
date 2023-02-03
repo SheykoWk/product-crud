@@ -14,7 +14,7 @@ const configs = {
             host: 'localhost',
             username: 'postgres',
             password: 'root',
-            database: 'products-db',
+            database: 'product-db',
             define: {
                 timestamps: true, //? Va a utilizar por defecto el created_at y updated_at
                 underscored: true, //? Convierte camelCase en snake_case todos los nombres y atributos de mis modelos

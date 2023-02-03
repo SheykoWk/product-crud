@@ -1,3 +1,5 @@
+const Products = require('../models/products.models')
+
 const productDB = [
     {
         id: 1,
@@ -16,7 +18,10 @@ const productDB = [
 let baseId = 3
 
 const findAllProducts = async () => {
-    return await productDB
+    //! return await productDB
+
+    const data = await Products.findAll()
+    return data
 }
 
 const findProductById = async (id) => {

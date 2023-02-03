@@ -7,13 +7,21 @@ const Products = db.define('products', {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
-
     },
     title: {
         type: DataTypes.STRING,
         allowNull: false, //? not null
-        defaultValue: 'Desconocido',
-        unique: true
+    },
+    price: {
+        type: DataTypes.DECIMAL,
+        allowNull: false
+    },
+    imageUrl: {
+        type: DataTypes.STRING,
+        allowNull: false
     }
 })
 
+
+
+module.exports = Products
