@@ -14,6 +14,7 @@ const configs = {
             host: 'localhost',
             username: 'postgres',
             password: 'root',
+            port: 5432,
             database: 'product-db',
             define: {
                 timestamps: true, //? Va a utilizar por defecto el created_at y updated_at
