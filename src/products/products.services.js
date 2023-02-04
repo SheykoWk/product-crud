@@ -38,8 +38,44 @@ const postNewProduct = (req, res) => {
         })
 }
 
+const deleteProduct = (req, res) => {
+    const id = req.params.id 
+
+    productControllers.deleteProduct(id)
+        .then(data => {
+            if(data){
+                res.status(204).json({message: 'Hola :D'})
+            } else {
+                res.status(404).json({message: 'Product not found'})
+            }
+        })
+        .catch(err => {
+            res.status(400).json(err)
+        })
+}
+
+const patchProduct = (req, res) => {
+    const id = req.params.id 
+    const productObj = req.body 
+    productControllers.updateProduct(id, productObj)
+        .then(data => {
+            if(data){
+                res.status(200).json({message: `Product with id: ${id} updated succesfully`})
+            } else {
+                res.status(404).json({message: 'Product not found'})
+            }
+        })
+        .catch(err => {
+            res.status(400).json(err)
+        })
+}
+
+
+
 module.exports = {
     getAllProducts,
     getProductById,
-    postNewProduct
+    postNewProduct,
+    deleteProduct,
+    patchProduct
 }
