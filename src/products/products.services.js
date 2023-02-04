@@ -44,7 +44,7 @@ const deleteProduct = (req, res) => {
     productControllers.deleteProduct(id)
         .then(data => {
             if(data){
-                res.status(204).json({message: 'Hola :D'})
+                res.status(204).json()
             } else {
                 res.status(404).json({message: 'Product not found'})
             }
@@ -70,12 +70,39 @@ const patchProduct = (req, res) => {
         })
 }
 
+const putProduct = (req, res) => {
+    const id = req.params.id 
+    const productObj = req.body 
 
+    if(!productObj.title || !productObj.price || !productObj.imageUrl){
+        return res.status(400).json({
+            message: 'Missing Data',
+            example_fields: {
+                title: 'String',
+                price: 10.99,
+                imageUrl: 'https:/google.com/image.png'
+            }
+        })
+    }
+
+    productControllers.updateProduct(id, productObj)
+        .then(data => {
+            if(data){
+                res.status(200).json({message: `Product with id: ${id} updated succesfully`})
+            } else {
+                res.status(404).json({message: 'Product not found'})
+            }
+        })
+        .catch(err => {
+            res.status(400).json(err)
+        })
+}
 
 module.exports = {
     getAllProducts,
     getProductById,
     postNewProduct,
     deleteProduct,
-    patchProduct
+    patchProduct,
+    putProduct
 }
