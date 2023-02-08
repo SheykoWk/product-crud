@@ -18,6 +18,7 @@ const findProductById = async (id) => {
     return data
 }
 
+
 // const findProductByIdWithPromises = (id) => {
 //     return new Promise((resolve, reject) => {
 //         const data = productDB.find(product => product.id === id)
