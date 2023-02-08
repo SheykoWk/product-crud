@@ -2,6 +2,7 @@
 const express = require('express')
 const productRouter = require('./products/products.router')
 const db = require('./utils/database')
+const initModels = require('./models/initModels')
 
 //? Initial configs 
 const app = express()
@@ -16,8 +17,6 @@ db.authenticate() //? Mostrar en consola de manera informativa si la conexion se
         console.log(err) //! Errores de autenticacion (contraseña, usuario o hosts)
     })
 
-    
-
 db.sync() //? Sincronizar nuestra base de datos con los modelos que tenemos definidos
     .then(() => {
         console.log('La base de datos del virus ha sido actualizada')
@@ -25,6 +24,8 @@ db.sync() //? Sincronizar nuestra base de datos con los modelos que tenemos defi
     .catch(err => {
         console.log(err) //! error en las tablas, propiedades, etc
     })
+
+initModels()
 
 
 //* como nosotros podemos recibir info o data del cliente

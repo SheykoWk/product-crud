@@ -34,6 +34,6 @@ const Products = db.define('products', {
 //! HasOne
 //! HasMany
 //! BelongsTo
-//! BelongsToMany
+//! 8
 
 module.exports = Products
