@@ -1,8 +1,22 @@
 const Products = require('../models/products.models')
+const Categories = require('../models/categories.models')
 
 const findAllProducts = async () => {
     //! return await productDB
-    const data = await Products.findAll()
+    //? select * from products;
+    //? select id, title, price from users;
+    const data = await Products.findAll({
+        attributes: ['id', 'title', 'price', 'imageUrl'], //? Estas propiedades son las que quiero mostrar
+        
+        include: {
+            model: Categories,
+            attributes: ['id', 'name']
+        }
+        
+        //! attributes: {
+        //!     exclude: ['createdAt', 'title'] // esta es la manera de excluir propiedades en especifico
+        //! }
+    })
     return data
 }
 
